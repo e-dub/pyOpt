@@ -358,23 +358,23 @@ class MMA(Optimizer):
 		
 		# Space for the coefficients and artificial 
 		# variables to be computed (set to default values)
-		p = numpy.zeros([m*n], numpy.float)
-		q = numpy.zeros([m*n], numpy.float)
-		p0 = numpy.zeros([n], numpy.float)
-		q0 = numpy.zeros([n], numpy.float)
-		b = numpy.zeros([m], numpy.float)
-		y = numpy.zeros([m], numpy.float)
+		p = numpy.zeros([int(m*n)], numpy.float)
+		q = numpy.zeros([int(m*n)], numpy.float)
+		p0 = numpy.zeros([int(n)], numpy.float)
+		q0 = numpy.zeros([int(n)], numpy.float)
+		b = numpy.zeros([int(m)], numpy.float)
+		y = numpy.zeros([int(m)], numpy.float)
 		z = numpy.array([0.], numpy.float)
-		a = numpy.zeros([m], numpy.float)
-		c = 10000*numpy.ones([m], numpy.float)
+		a = numpy.zeros([int(m)], numpy.float)
+		c = 10000*numpy.ones([int(m)], numpy.float)
 		
 		# Space for the Lagrange multipliers (ulam) 
 		# the gradient of the dual objective function,
 		# search direction, and Hessian of the dual objective
-		ulam = numpy.ones([m], numpy.float)
-		gradf = numpy.zeros([m], numpy.float)
-		dsrch = numpy.zeros([m], numpy.float)
-		hessf = numpy.zeros([m*(m+1)/2], numpy.float)
+		ulam = numpy.ones([int(m)], numpy.float)
+		gradf = numpy.zeros([int(m)], numpy.float)
+		dsrch = numpy.zeros([int(m)], numpy.float)
+		hessf = numpy.zeros([int(m*(m+1)/2)], numpy.float)
 		
 		# Specify that all variables are free to move
 		iyfree = numpy.ones([m], numpy.int)
