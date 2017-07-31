@@ -8,17 +8,6 @@ Solves Rosenbrock's Unconstrained Problem.
     f* = 0 , x* = [1, 1]
 '''
 
-
-# =============================================================================
-# Standard Python modules
-# =============================================================================
-import os, sys, time
-import pdb
-
-# =============================================================================
-# Extension modules
-# =============================================================================
-#from pyOpt import *
 from pyOpt import Optimization
 from pyOpt import PSQP
 from pyOpt import SLSQP
@@ -28,23 +17,17 @@ from pyOpt import SOLVOPT
 from pyOpt import KSOPT
 from pyOpt import NSGA2
 from pyOpt import SDPEN
+from pyOpt import IPOPT
+from pyOpt import NLPQLP
 
 
-# =============================================================================
-# 
-# =============================================================================
 def objfunc(x):
-    
     f = 100*(x[1]-x[0]**2)**2+(1-x[0])**2
     g = []
-    
     fail = 0
     return f,g, fail
     
 
-# =============================================================================
-# 
-# ============================================================================= 
 opt_prob = Optimization('Rosenbrock Unconstraint Problem',objfunc)
 opt_prob.addVar('x1','c',lower=-10.0,upper=10.0,value=-3.0)
 opt_prob.addVar('x2','c',lower=-10.0,upper=10.0,value=-4.0)
@@ -98,3 +81,15 @@ sdpen = SDPEN()
 sdpen.setOption('iprint',-1)
 sdpen(opt_prob)
 print(opt_prob.solution(7))
+
+# Instantiate Optimizer (NLPQLP) & Solve Problem
+nlpqlp = NLPQLP()
+nlpqlp.setOption('IPRINT',0)
+nlpqlp(opt_prob, sens_type='FD')
+print(opt_prob.solution(8))
+
+# Instantiate Optimizer (IPOPT) & Solve Problem
+ipopt = IPOPT()
+ipopt.setOption('print_level', 0)
+ipopt(opt_prob, sens_type='FD')
+print(opt_prob.solution(9))

@@ -144,8 +144,8 @@ class NSGA2(Optimizer):
                 #
                 if self.poa:
                         try:
-                                from openmpi import mpi4py
-                                from openmpi.mpi4py import MPI
+                                import mpi4py
+                                from mpi4py import MPI
                         except ImportError:
                                 print('pyNSGA-II: Parallel objective Function Analysis requires mpi4py')
 
@@ -161,6 +161,8 @@ class NSGA2(Optimizer):
                                 Send = comm.send
                                 Recv = comm.recv
                                 Bcast = comm.bcast
+                        else:
+                                raise IOError('mpi4py version not recognized')
 
                         self.pll = True
                         self.myrank = comm.Get_rank()

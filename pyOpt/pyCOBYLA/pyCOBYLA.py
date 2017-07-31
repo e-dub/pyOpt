@@ -138,16 +138,18 @@ class COBYLA(Optimizer):
 		#
 		if self.poa:
 			try:
-				from openmpi import mpi4py
-				from openmpi.mpi4py import MPI
+				import mpi4py
+				from mpi4py import MPI
 			except ImportError:
 				print('pyCOBYLA: Parallel objective Function Analysis requires mpi4py')
 			comm = MPI.COMM_WORLD
 			nproc = comm.Get_size()
 			if (mpi4py.__version__[0] == '0'):
 				Bcast = comm.Bcast
-			elif (mpi4py.__version__[0] == '1'):
+			elif (mpi4py.__version__[0] >= '1'):
 				Bcast = comm.bcast
+			else:
+        			raise IOError('mpi4py version not recognized')
 			self.pll = True
 			self.myrank = comm.Get_rank()
 		else:

@@ -824,7 +824,7 @@ class IPOPT(Optimizer):
 
         # Store Results
         sol_inform = {}
-        print(r)
+        #print(r)
         sol_inform['value'] = r[-1]  # ifail[0]
         sol_inform['text'] = self.getInform(r[-1])  # self.getInform(ifail[0])
 

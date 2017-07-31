@@ -1,4 +1,8 @@
 # pyOpt
+A branch of pyOpt to work with Python 3, based on madebr/pyOpt.
+
+
+# Original pyOpt description
 PYthon OPTimization Framework
 Copyright (c) 2008-2014, pyOpt Developers
 
@@ -33,13 +37,3 @@ the LICENSE file for details.
 Please cite pyOpt and the authors of the respective optimization
 algorithms in any publication for which you find it useful. 
 (This is not a legal requirement, just a polite request.)
-
-
-## Contact and Feedback
-
-If you have questions, comments, problems, want to contribute to the
-framework development, or want to report a bug, please contact the 
-main developers:
-    
--   [Dr. Ruben E. Perez](mailto:Ruben.Perez@rmc.ca)
--   [Peter W. Jansen](mailto:Peter.Jansen@rmc.ca)
