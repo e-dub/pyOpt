@@ -872,7 +872,7 @@ class IPOPT(Optimizer):
                 arguments=args,
                 **kwargs)
 
-        return ff, xx, sol_inform  # ifail[0]
+        return r[-2], r[0], sol_inform  # ifail[0]
 
     def _on_setOption(self, name, value):
         """Set Optimizer Option Value (Optimizer Specific Routine).
